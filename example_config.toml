@@ -1,0 +1,10 @@
+countries = [
+    "France",
+    "United Kingdom",
+    "Canada",
+]
+
+states = [
+    "New York",
+    "California",
+]
