@@ -14,7 +14,7 @@ class Config(pydantic.BaseModel):
     countries: list[str]
     states: list[str]
 
-    @pydantic.validator("countries")
+    @pydantic.field_validator("countries")
     def validate_countries(cls, countries):
         valid = geo_countries()
         valid_names = {entry["properties"]["name"] for entry in valid["features"]}
@@ -26,7 +26,7 @@ class Config(pydantic.BaseModel):
         return countries
 
 
-    @pydantic.validator("states")
+    @pydantic.field_validator("states")
     def validate_states(cls, states):
         valid = geo_states()
         valid_names = {entry["properties"]["name"] for entry in valid["features"]}
