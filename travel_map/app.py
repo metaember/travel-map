@@ -70,7 +70,10 @@ def asset_folder() -> Path:
 
 
 def config_file() -> Path:
-    return asset_folder().parent / "config.toml"
+    path = asset_folder().parent / "config.toml"
+    if path.is_file():
+        return path
+    return asset_folder().parent / "example_config.toml"
 
 
 def get_config() -> Config:
