@@ -33,4 +33,4 @@ HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
 # --browser.serverPort
 # --browser.serverAddress
-ENTRYPOINT ["poetry", "run", "streamlit", "--", "run", "/app/travel_map/app.py", "--browser.gatherUsageStats=false", "--browser.serverPort=8501", "--server.address=0.0.0.0", "--server.enableXsrfProtection=false", "--server.headless=true", "--server.enableCORS=false", "--client.showErrorDetails=true", "--logger.level=debug"]
+CMD ["poetry", "run", "streamlit", "--", "run", "/app/travel_map/app.py", "--browser.gatherUsageStats=false", "--browser.serverPort=8501", "--server.address=0.0.0.0", "--server.headless=true", "--client.showErrorDetails=true", "--logger.level=debug"]
