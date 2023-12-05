@@ -9,6 +9,14 @@ put it, and I'm pretty sure it would not look good... so instead I made a webapp
 
 2. Run the following command from the root folder of the repo.
 
+
+```bash
+docker build -t travel-map .
+docker run -dp 127.0.0.1:7001:7001 travel-map
+```
+
+
+Or, if you want to run without docker:
 ```bash
 poetry run streamlit -- run travel_map/app.py
 ```
