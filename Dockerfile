@@ -27,10 +27,10 @@ RUN poetry config virtualenvs.create false \
 # Creating folders, and files for a project:
 COPY . /app
 
-EXPOSE 8501
+EXPOSE 7001
 
-HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
+HEALTHCHECK CMD curl --fail http://localhost:7001/_stcore/health
 
 # --browser.serverPort
 # --browser.serverAddress
-CMD ["poetry", "run", "streamlit", "--", "run", "/app/travel_map/app.py", "--browser.gatherUsageStats=false", "--browser.serverPort=8501", "--server.address=0.0.0.0", "--server.headless=true", "--client.showErrorDetails=true", "--logger.level=debug"]
+CMD ["poetry", "run", "streamlit", "--", "run", "/app/travel_map/app.py", "--browser.gatherUsageStats=false", "--server.port=7001", "--server.address=0.0.0.0", "--server.headless=true", "--client.showErrorDetails=true", "--logger.level=debug"]
