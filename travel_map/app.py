@@ -17,7 +17,7 @@ class Config(pydantic.BaseModel):
     @pydantic.field_validator("countries")
     def validate_countries(cls, countries):
         valid = geo_countries()
-        valid_names = {entry["properties"]["name"] for entry in valid["features"]}
+        valid_names = {entry["properties"]["admin"] for entry in valid["features"]}
 
         for country in countries:
             if country not in valid_names:
@@ -101,7 +101,7 @@ def show_map(config: Config):
 
     countries_geo = geo_countries()
     # Here we remove the US since we're going to be using states instead
-    countries_geo["features"] = [c for c in countries_geo["features"] if c["id"] != "USA"]
+    countries_geo["features"] = [c for c in countries_geo["features"] if c["properties"]["iso_a3"] != "USA"]
     country_data = config.visited_countries()
 
     m = folium.Map(location=[48, -102], zoom_start=3)
@@ -111,7 +111,7 @@ def show_map(config: Config):
         name="choropleth",
         data=country_data,
         columns=["country", "visited"],
-        key_on="feature.properties.name",
+        key_on="feature.properties.admin",
         fill_color="YlGn",
         fill_opacity=0.7,
         line_opacity=0.2,

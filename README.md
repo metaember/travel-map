@@ -26,3 +26,7 @@ poetry run streamlit -- run travel_map/app.py
 
 - Store the date (or year) of last visit, and show color map by age of last visit
 - Store the count of visits or array of dates, and show visit count or weighted average of visits
+
+# Developper notes
+
+World country data is taken from https://geojson.xyz/naturalearth-3.3.0/ne_50m_admin_0_countries.geojson
